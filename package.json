@@ -1,0 +1,17 @@
+{
+  "name": "@instago/twilio",
+  "version": "1.0.0",
+  "description": "Module twilio",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "instago",
+    "twilio"
+  ],
+  "files": [
+    "index.js",
+    "ReadMe.MD",
+    "LICENSE"
+  ]
+}
