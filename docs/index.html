@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>twilio Documentation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+      .intro {
+        font-size: 16px;
+        color: #e2e8f0;
+      }
+      p {
+        margin: 0 0 16px;
+        color: #cbd5f5;
+      }
+      ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+      }
+      a {
+        color: #93c5fd;
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .muted {
+        color: #94a3b8;
+        font-size: 14px;
+        margin: 6px 0 0;
+      }
+      .code {
+        background: #0b1220;
+        border: 1px solid #1e293b;
+        border-radius: 10px;
+        padding: 16px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 13px;
+        line-height: 1.5;
+        color: #e2e8f0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>module/twilio - V8 module</h1>
+      <p class="intro">Send text messages through Twilio from workflows and test scripts without wiring up extra infrastructure. This module keeps the API small so you can focus on the message content rather than transport details.</p>
+      <p class="muted">Learn more at <a href="https://instago.ai" target="_blank" rel="noopener">https://instago.ai</a>.</p>
+      <div class="section">
+        <h2>Technical reference</h2>
+        <h1>module/twilio - V8 module</h1>
+<p>Send text messages through Twilio from workflows and test scripts without wiring up extra infrastructure. This module keeps the API small so you can focus on the message content rather than transport details.</p>
+<p>It is designed for the hgi-v8 runtime and fits into the broader Instago automation stack. Learn more at https://instago.ai.</p>
+<h2>Technical reference</h2>
+<p>Exports:</p>
+<ul>
+<li><code>configure({ accountSid, authToken, from })</code></li>
+<li><code>send({ to, text, from? }) -&gt; { ok, data, error }</code></li>
+</ul>
+<p>Usage:</p>
+<ul>
+<li>Load with <code>require(&#x27;twilio@latest&#x27;)</code>.</li>
+<li>Call <code>configure</code> once to set defaults, or pass <code>from</code> in each <code>send</code> call.</li>
+<li><code>send</code> returns <code>{ ok, data, error }</code> and does not throw on validation errors.</li>
+</ul>
+<p>Configuration:</p>
+<ul>
+<li>Optional env keys:</li>
+<li><code>twilio.sid</code></li>
+<li><code>twilio.token</code></li>
+<li><code>twilio.from</code></li>
+</ul>
+<p>Examples:</p>
+<pre class="code"><code>
+const twilio = require(&#x27;twilio@latest&#x27;);
+
+twilio.configure({
+  accountSid: env.twilio.sid,
+  authToken: env.twilio.token,
+  from: env.twilio.from
+});
+
+const res = await twilio.send({ to: &#x27;+15551234567&#x27;, text: &#x27;Hello from V8&#x27; });
+if (!res.ok) console.error(&#x27;twilio error:&#x27;, res.error);
+</code></pre>
+<pre class="code"><code>
+const twilio = require(&#x27;twilio@latest&#x27;);
+
+const res = await twilio.send({
+  to: &#x27;+15551234567&#x27;,
+  from: &#x27;+15557654321&#x27;,
+  text: &#x27;Override sender per message&#x27;
+});
+</code></pre>
+      </div>
+      
+    </main>
+  </body>
+</html>

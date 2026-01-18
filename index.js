@@ -1,10 +1,10 @@
-// twilio@1.0.0 — SMS sender via Twilio REST API
+// twilio@latest — SMS sender via Twilio REST API
 // configure({ accountSid, authToken, from })
 // send({ to, text, from? }) -> { ok, data, error }
 
 (function(){
-  const httpx = require('http@1.0.0');
-  const log = require('log@1.0.0').create('twilio');
+  const httpx = require('http@latest');
+  const log = require('log@latest').create('twilio');
 
   const state = { sid: null, token: null, from: null };
   function configure({ accountSid, authToken, from } = {}){
